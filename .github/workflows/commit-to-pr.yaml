@@ -59,7 +59,7 @@ jobs:
   plan:
     strategy:
       matrix:
-        folder: ["./"]
+        folder: ["examples/elastic_container_registry"]
     name: Terraform plan for ${{ matrix.folder }}
     runs-on: ubuntu-20.04
     needs: [validation, linting]

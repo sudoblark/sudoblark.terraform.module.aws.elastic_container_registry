@@ -31,7 +31,7 @@ locals {
     for repository in var.raw_ecr_registries : {
       suffix : repository.suffix,
       repository_policy : data.aws_iam_policy_document.registry_policy.json
-      repository_lifecycle_policy : repository.lifecycle_rules != [] ? jsonencode({ rules = local.lifecycle_rules[repository.suffix] }) : null
+      repository_lifecycle_policy : length(repository.lifecycle_rules) > 0 ? jsonencode({ rules = local.lifecycle_rules[repository.suffix] }) : null
     }
   ])
 }
